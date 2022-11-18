@@ -31,4 +31,5 @@ class TranslateService {
         }
 
     }
+}
 export default new TranslateService();
