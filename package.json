@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@git.roicou.com:mastodon/rccelta_bot.git"
+    "url": "git@git.roicou.com:mastodon/feed_bot.git"
   },
   "author": "Roi C.",
   "license": "GNU",
