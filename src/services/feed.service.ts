@@ -27,9 +27,10 @@ class FeedService {
                 const entries: FeedInterface[] = feed.entries.sort((a: FeedInterface, b: FeedInterface) => {
                     // sort by date desc with DateTime
                     return DateTime.fromISO(b.published).toMillis() - DateTime.fromISO(a.published).toMillis();
-                }).filter((entry: FeedInterface) => {day
+                }).filter((entry: FeedInterface) => {
+                    day
                     // only today entries
-                    return DateTime.fromISO(entry.published).toMillis() >= DateTime.local().minus({day: day}).startOf('day').toMillis();
+                    return DateTime.fromISO(entry.published).toMillis() >= DateTime.local().minus({ day: day }).startOf('day').toMillis();
                 });
                 if (!entries.length) {
                     logger.info(`${rss.title}: there are no entries for today. Skipping...`);
@@ -51,6 +52,7 @@ class FeedService {
                 const to_send = entries[lastUrlIndex];
                 to_send.hashtag = rss.hashtag;
                 to_send.rss = rss._id;
+                to_send.language = rss.language;
                 return to_send;
             }
             logger.info("There are no new feeds for today. Looking for on y esterday...");

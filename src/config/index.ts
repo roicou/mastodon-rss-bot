@@ -28,6 +28,10 @@ export default {
      */
     feed: {
         max_feeds: process.env.MAX_FEEDS || 1,
+        min_time: parseInt(process.env.MIN_TIME) || 35,
+        max_time: parseInt(process.env.MAX_TIME) || 60,
+        hour_start: parseInt(process.env.HOUR_START) || 8,
+        hour_end: parseInt(process.env.HOUR_END) || 23,
     },
     /**
      * database config
@@ -51,7 +55,6 @@ export default {
         api: process.env.GOOGLE_API,
         project_id: process.env.GOOGLE_PROJECT_ID,
         max_chars: process.env.GOOGLE_MAX_CHARS || 500000,
-        target_language: process.env.GOOGLE_TARGET_LANGUAGE || "gl",
-        source_language: process.env.GOOGLE_SOURCE_LANGUAGE || "es"
+        translate_to: process.env.GOOGLE_TRANSLATE_TO || "gl",
     }
 }

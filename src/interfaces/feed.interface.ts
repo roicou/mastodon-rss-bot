@@ -6,5 +6,6 @@ export default interface FeedInterface {
     published: string;
     description: string;
     hashtag: string;
-    rss: ObjectId
+    rss: ObjectId;
+    language: string;
 }

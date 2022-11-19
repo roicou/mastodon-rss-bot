@@ -18,6 +18,10 @@ const RssModel = new Schema<RssInterface>({
     lastUrl: {
         type: String,
         required: false,
+    },
+    language: {
+        type: String,
+        required: true,
     }
 }, {
     timestamps: true,

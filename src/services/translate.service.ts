@@ -14,12 +14,17 @@ class TranslateService {
 
     public async translate(
         text: string,
-        target_language: string = config.google.target_language,
-        source_language: string = config.google.source_language
+        source_language: string,
+        target_language: string = config.google.translate_to,
     ): Promise<string> {
         try {
+            if(source_language === target_language) {
+                return text;
+            }
+            logger.info("Translating texto from '" + source_language + "' to '" + target_language + "'");
             const cuote = await cuoteService.getCuote();
             if (text.length + cuote > config.google.max_chars) {
+                logger.info("Monthly translation quota exceeded");
                 return text;
             }
             const [translation] = await this.client.translate(text, target_language);

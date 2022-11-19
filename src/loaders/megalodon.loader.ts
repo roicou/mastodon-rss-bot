@@ -11,15 +11,15 @@ export default async (client: MegalodonInterface) => {
 
     let minutes = getNumber();
     logger.info(`Next feed in ${minutes} minutes`);
-    let i = 0;
+    let elapsed_minutes = 0;
     setInterval(async () => {
         try {
             const now = DateTime.local();
             // if now is between 9:00 and 23:00
-            if (now.hour >= 8 && now.hour <= 23) {
-                i++;
-                if (i >= minutes) {
-                    i = 0;
+            if (now.hour >= config.feed.hour_start && now.hour <= config.feed.hour_end) {
+                elapsed_minutes++;
+                if (elapsed_minutes >= minutes) {
+                    elapsed_minutes = 0;
                     minutes = getNumber();
                     for (let j = 0; j < config.feed.max_feeds; j++) {
                         const feed = await feedService.getNextFeed();
@@ -54,8 +54,8 @@ export default async (client: MegalodonInterface) => {
  * @returns {number} random number between 40 and 60
  */
 function getNumber() {
-    const max = 35;
-    const min = 50;
+    const max = config.feed.max_time;
+    const min = config.feed.min_time;
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 

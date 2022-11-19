@@ -6,6 +6,7 @@ export default interface RssInterface {
     hashtag?: string;
     url?: string;
     lastUrl?: string;
+    language?: string;
     createdAt?: Date;
     updatedAt?: Date;
 }

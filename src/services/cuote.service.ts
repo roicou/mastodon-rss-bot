@@ -5,6 +5,7 @@ import { DateTime, Settings } from 'luxon';
 Settings.defaultZone = "Europe/Madrid";
 class CuoteService {
 
+    
     public async getCuote(): Promise<number> {
         const cuote = await cuoteModel.findOne({ api: config.google.api });
         if (!cuote) {

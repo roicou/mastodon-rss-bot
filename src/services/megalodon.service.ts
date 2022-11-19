@@ -10,7 +10,7 @@ class MegalodonService {
     public async sendFeed(client: MegalodonInterface, feed: FeedInterface) {
         try {
             let title = this.prepareEnd(feed.title);
-            title = await translateService.translate(title)
+            title = await translateService.translate(title, feed.language)
             let message: string = title;
             //if (feed.description) {
 
@@ -20,7 +20,6 @@ class MegalodonService {
             message += `\n${feed.link}`;
             // console.log("\n\n" + message + "\n\n");
             logger.info('Sending message:\n' + message);
-
             await client.postStatus(message);
             await rssService.updateRssSended(feed.rss, feed.link);
         } catch (err) {
