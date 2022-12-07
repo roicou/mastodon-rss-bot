@@ -34,12 +34,11 @@ class MegalodonService {
 
     private prepareTitle(text: string) {
         // if text is "Guía para seguir a todos los mundialistas de LaLiga", throw error
-        let error = false;
         let forbiddenTitles = [];
         try {
             forbiddenTitles = JSON.parse(fs.readFileSync(process.cwd() + '/forbiddenTitles.json', 'utf8'));
         } catch (err) {
-            error = true;
+            return null;
             logger.error("Error reading forbiddenTitles.json");
         }
         if (forbiddenTitles.includes(text)) {
