@@ -24,14 +24,14 @@ export default async (client: MegalodonInterface) => {
                     for (let j = 0; j < config.feed.max_feeds; j++) {
                         const feed = await feedService.getNextFeed();
                         if (feed) {
-                            // logger.info(`Sending feed #${feed.hashtag}: ${feed.title}`);
+                             logger.info(`Sending feed #${feed.hashtag}: ${feed.title}`);
                             await megalodonService.sendFeed(client, feed);
                         } else {
                             logger.info("There are no new feeds to send");
                         }
                     }
                     logger.info(`Next feed in ${minutes} minutes`);
-                }
+               }
             }
         } catch (err) {
             logger.error(err);

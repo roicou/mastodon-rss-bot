@@ -28,7 +28,9 @@ class MegalodonService {
     }
 
     private prepareEnd(text: string) {
-
+        // remove <span lang="gl"> and </span>
+        text = text.replace(/<span lang="gl">/g, "");
+        text = text.replace(/<\/span>/g, "");
         if (text.endsWith("&nbsp; Leer")) {
             text = text.replace("&nbsp; Leer", "");
         }

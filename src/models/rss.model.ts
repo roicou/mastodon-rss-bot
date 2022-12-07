@@ -15,6 +15,10 @@ const RssModel = new Schema<RssInterface>({
         type: String,
         required: true,
     },
+    www: {
+        type: String,
+        required: false,
+    },
     lastUrl: {
         type: String,
         required: false,
