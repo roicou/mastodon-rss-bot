@@ -2,8 +2,6 @@ import FeedInterface from "@/interfaces/feed.interface";
 import logger from "@/libs/logger";
 import { MegalodonInterface } from "megalodon";
 import rssService from "@/services/rss.service";
-import cuoteService from "./cuote.service";
-import config from "@/config";
 import translateService from "./translate.service";
 import fs from "fs";
 
@@ -21,7 +19,12 @@ class MegalodonService {
             //   message += `\n${this.prepareEnd(feed.description)}`;
             // }
             message += `\n#RCCelta #Celta #${feed.hashtag}`;
-            message += `\n${feed.link}`;
+            let link = feed.link;
+            if(feed.www) {
+                // substitute feed.link 'www' with feed.www
+                link = link.replace('www', feed.www);
+            }
+            message += `\n${link}`;
             // console.log("\n\n" + message + "\n\n");
             logger.info('Sending message:\n' + message);
             await client.postStatus(message);

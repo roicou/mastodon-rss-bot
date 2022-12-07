@@ -40,10 +40,7 @@ class FeedService {
                 // find entrie position of rss.lastUrl
                 
                 let lastUrlIndex = entries.findIndex((entrie: FeedInterface) => {
-                    if(rss.www) {
-                        // sustitute in to_send.link the "www" for the rss.www
-                        entrie.link = entrie.link.replace('www', rss.www);
-                    }
+                    
                     return entrie.link === rss.lastUrl
                 });
                 if (!lastUrlIndex || lastUrlIndex === 0) {
@@ -57,10 +54,7 @@ class FeedService {
                 }
                 lastUrlIndex--;
                 const to_send = entries[lastUrlIndex];
-                if(rss.www) {
-                    // sustitute in to_send.link the "www" for the rss.www
-                    to_send.link = to_send.link.replace('www', rss.www);
-                }
+                to_send.www = rss.www || null;
                 to_send.hashtag = rss.hashtag;
                 to_send.rss = rss._id;
                 to_send.language = rss.language;
