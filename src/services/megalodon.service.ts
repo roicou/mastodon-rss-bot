@@ -38,8 +38,8 @@ class MegalodonService {
         try {
             forbiddenTitles = JSON.parse(fs.readFileSync(process.cwd() + '/forbiddenTitles.json', 'utf8'));
         } catch (err) {
-            return null;
             logger.error("Error reading forbiddenTitles.json");
+            return null;
         }
         if (forbiddenTitles.includes(text)) {
             logger.error("Title forbidden: " + text);
@@ -51,17 +51,20 @@ class MegalodonService {
         if (text.endsWith("&nbsp; Leer")) {
             text = text.replace("&nbsp; Leer", "");
         }
-        if (text.length > 300) {
-            text = text.substring(0, 300);
-            const lastSpace = text.lastIndexOf(' ');
-            text = text.substring(0, lastSpace);
-            text += "...";
-        }
         if (text.endsWith('...')) {
             // search last dot before ...
             const lastDot = text.lastIndexOf('.', text.length - 4);
             // remove from lastDot to the end
             text = text.substring(0, lastDot);
+        }
+        if (text.endsWith('.')) {
+            text = text.substring(0, text.length - 1);
+        }
+        if (text.length > 300) {
+            text = text.substring(0, 300);
+            const lastSpace = text.lastIndexOf(' ');
+            text = text.substring(0, lastSpace);
+            text += "...";
         }
         return text;
     }
