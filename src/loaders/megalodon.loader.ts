@@ -21,11 +21,15 @@ export default async (client: MegalodonInterface) => {
                 if (elapsed_minutes >= minutes) {
                     elapsed_minutes = 0;
                     minutes = getNumber();
-                    for (let j = 0; j < config.feed.max_feeds; j++) {
+                    for (let i = 0; i < config.feed.max_feeds; i++) {
                         const feed = await feedService.getNextFeed();
                         if (feed) {
-                             logger.info(`Sending feed #${feed.hashtag}: ${feed.title}`);
-                            await megalodonService.sendFeed(client, feed);
+                            // logger.info(`Sending feed #${feed.hashtag}: ${feed.title}`);
+                            const res = await megalodonService.sendFeed(client, feed);
+                            if(!res) {
+                                i--;
+                                continue;
+                            }
                         } else {
                             logger.info("There are no new feeds to send");
                         }
@@ -37,8 +41,6 @@ export default async (client: MegalodonInterface) => {
             logger.error(err);
         }
     }, /* each minute */ 60000);
-    //}, 1000);
-    // /* 43 minutes */ 43 * 60 * 1000); //124
 
     // client.postStatus("Ola mundo!")
     //     .then((res: Response<Entity.Status>) => {

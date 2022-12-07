@@ -5,29 +5,47 @@ import rssService from "@/services/rss.service";
 import cuoteService from "./cuote.service";
 import config from "@/config";
 import translateService from "./translate.service";
+import fs from "fs";
 
 class MegalodonService {
     public async sendFeed(client: MegalodonInterface, feed: FeedInterface) {
         try {
-            let title = this.prepareEnd(feed.title);
+            let title = this.prepareTitle(feed.title);
+            if (!title) {
+                await rssService.updateRssSended(feed.rss, feed.link);
+                return false;
+            }
             title = await translateService.translate(title, feed.language)
             let message: string = title;
-            //if (feed.description) {
-
-            //message += `\n${this.prepareEnd(feed.description)}`;
-            //}
+            // if (feed.description) {
+            //   message += `\n${this.prepareEnd(feed.description)}`;
+            // }
             message += `\n#RCCelta #Celta #${feed.hashtag}`;
             message += `\n${feed.link}`;
             // console.log("\n\n" + message + "\n\n");
             logger.info('Sending message:\n' + message);
             await client.postStatus(message);
             await rssService.updateRssSended(feed.rss, feed.link);
+            return true;
         } catch (err) {
             logger.error(err);
         }
     }
 
-    private prepareEnd(text: string) {
+    private prepareTitle(text: string) {
+        // if text is "Guía para seguir a todos los mundialistas de LaLiga", throw error
+        let error = false;
+        let forbiddenTitles = [];
+        try {
+            forbiddenTitles = JSON.parse(fs.readFileSync(process.cwd() + '/forbiddenTitles.json', 'utf8'));
+        } catch (err) {
+            error = true;
+            logger.error("Error reading forbiddenTitles.json");
+        }
+        if (forbiddenTitles.includes(text)) {
+            logger.error("Title forbidden: " + text);
+            return null;
+        }
         // remove <span lang="gl"> and </span>
         text = text.replace(/<span lang="gl">/g, "");
         text = text.replace(/<\/span>/g, "");
@@ -46,10 +64,7 @@ class MegalodonService {
             // remove from lastDot to the end
             text = text.substring(0, lastDot);
         }
-        if (text.endsWith(".")) {
-            return text;
-        }
-        return text + ".";
+        return text;
     }
 }
 export default new MegalodonService();
