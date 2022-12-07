@@ -38,7 +38,14 @@ class FeedService {
                     continue;
                 }
                 // find entrie position of rss.lastUrl
-                let lastUrlIndex = entries.findIndex((entrie: FeedInterface) => entrie.link === rss.lastUrl);
+                
+                let lastUrlIndex = entries.findIndex((entrie: FeedInterface) => {
+                    if(rss.www) {
+                        // sustitute in to_send.link the "www" for the rss.www
+                        entrie.link = entrie.link.replace('www', rss.www);
+                    }
+                    return entrie.link === rss.lastUrl
+                });
                 if (!lastUrlIndex || lastUrlIndex === 0) {
                     logger.info(`${rss.title}: there are all published. Skipping...`);
                     await rssService.updateRss(rss._id);
