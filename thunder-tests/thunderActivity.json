@@ -1,0 +1,433 @@
+[
+  {
+    "_id": "e73b8bfe-a905-4ec4-86ba-000a285f3b21",
+    "colId": "history",
+    "containerId": "",
+    "name": "https://www.thunderclient.com/welcome",
+    "url": "https://www.thunderclient.com/welcome",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-01-18T11:01:23.727Z",
+    "modified": "2023-01-18T11:01:23.727Z",
+    "headers": [
+      {
+        "name": "POST",
+        "value": "/TradutorPublico/traducir/text HTTP/1.1"
+      },
+      {
+        "name": "Host",
+        "value": "tradutorgaio.xunta.gal"
+      },
+      {
+        "name": "User-Agent",
+        "value": "Mozilla/5.0 (X11; Linux x86_64; rv:108.0) Gecko/20100101 Firefox/108.0"
+      },
+      {
+        "name": "Accept",
+        "value": "application/json, text/javascript, */*; q=0.01"
+      },
+      {
+        "name": "Accept-Language",
+        "value": "es,en-US;q=0.7,en;q=0.3"
+      },
+      {
+        "name": "Accept-Encoding",
+        "value": "gzip, deflate, br"
+      },
+      {
+        "name": "Content-Type",
+        "value": "application/x-www-form-urlencoded; charset=UTF-8"
+      },
+      {
+        "name": "X-Requested-With",
+        "value": "XMLHttpRequest"
+      },
+      {
+        "name": "Content-Length",
+        "value": "93"
+      },
+      {
+        "name": "Origin",
+        "value": "https://tradutorgaio.xunta.gal"
+      },
+      {
+        "name": "Connection",
+        "value": "keep-alive"
+      },
+      {
+        "name": "Referer",
+        "value": "https://tradutorgaio.xunta.gal/TradutorPublico/traducir/index"
+      },
+      {
+        "name": "Cookie",
+        "value": "dicTematicoPub=cidadania; ultimasOrixesPub=es,gl,pt; ultimosDestinosPub=gl,pt,es; JSESSIONID=K-DEYXe0My-6YMo0iZL1iSuzlc7lXTpApuF_xodpwYCo3T8F6-7a!-912607337"
+      },
+      {
+        "name": "Sec-Fetch-Dest",
+        "value": "empty"
+      },
+      {
+        "name": "Sec-Fetch-Mode",
+        "value": "cors"
+      },
+      {
+        "name": "Sec-Fetch-Site",
+        "value": "same-origin"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "text",
+      "raw": "langpair=es-gl&dic_tematico=cidadania&q=Denis+solo+saldrá+del+Celta+como+traspaso.+Esto+se+debe+a+que+el+Celta+está+necesitado+de+dinero+y+saben+que+vendiendo+a+Denis+va+a+entrar+mucho&marcar=true",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "dd756f82-0f87-4e23-b95b-07a328fb87e3",
+    "colId": "history",
+    "containerId": "",
+    "name": "https://tradutorgaio.xunta.gal/TradutorPublico/traducir/index",
+    "url": "https://tradutorgaio.xunta.gal/TradutorPublico/traducir/index",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-01-18T11:01:40.276Z",
+    "modified": "2023-01-18T11:01:40.276Z",
+    "headers": [
+      {
+        "name": "POST",
+        "value": "/TradutorPublico/traducir/text HTTP/1.1"
+      },
+      {
+        "name": "Host",
+        "value": "tradutorgaio.xunta.gal"
+      },
+      {
+        "name": "User-Agent",
+        "value": "Mozilla/5.0 (X11; Linux x86_64; rv:108.0) Gecko/20100101 Firefox/108.0"
+      },
+      {
+        "name": "Accept",
+        "value": "application/json, text/javascript, */*; q=0.01"
+      },
+      {
+        "name": "Accept-Language",
+        "value": "es,en-US;q=0.7,en;q=0.3"
+      },
+      {
+        "name": "Accept-Encoding",
+        "value": "gzip, deflate, br"
+      },
+      {
+        "name": "Content-Type",
+        "value": "application/x-www-form-urlencoded; charset=UTF-8"
+      },
+      {
+        "name": "X-Requested-With",
+        "value": "XMLHttpRequest"
+      },
+      {
+        "name": "Content-Length",
+        "value": "93"
+      },
+      {
+        "name": "Origin",
+        "value": "https://tradutorgaio.xunta.gal"
+      },
+      {
+        "name": "Connection",
+        "value": "keep-alive"
+      },
+      {
+        "name": "Referer",
+        "value": "https://tradutorgaio.xunta.gal/TradutorPublico/traducir/index"
+      },
+      {
+        "name": "Cookie",
+        "value": "dicTematicoPub=cidadania; ultimasOrixesPub=es,gl,pt; ultimosDestinosPub=gl,pt,es; JSESSIONID=K-DEYXe0My-6YMo0iZL1iSuzlc7lXTpApuF_xodpwYCo3T8F6-7a!-912607337"
+      },
+      {
+        "name": "Sec-Fetch-Dest",
+        "value": "empty"
+      },
+      {
+        "name": "Sec-Fetch-Mode",
+        "value": "cors"
+      },
+      {
+        "name": "Sec-Fetch-Site",
+        "value": "same-origin"
+      }
+    ],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "46d99519-29d8-47ba-86e6-6570e16cfbb0",
+    "colId": "history",
+    "containerId": "",
+    "name": "https://tradutorgaio.xunta.gal/TradutorPublico/traducir/text",
+    "url": "https://tradutorgaio.xunta.gal/TradutorPublico/traducir/text",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-01-18T11:04:37.422Z",
+    "modified": "2023-01-18T12:13:43.319Z",
+    "headers": [
+      {
+        "name": "POST",
+        "value": "/TradutorPublico/traducir/text HTTP/1.1"
+      },
+      {
+        "name": "Host",
+        "value": "tradutorgaio.xunta.gal"
+      },
+      {
+        "name": "Accept",
+        "value": "application/json, text/javascript, */*; q=0.01"
+      },
+      {
+        "name": "Accept-Language",
+        "value": "es,en-US;q=0.7,en;q=0.3"
+      },
+      {
+        "name": "Accept-Encoding",
+        "value": "gzip, deflate, br"
+      },
+      {
+        "name": "Content-Type",
+        "value": "application/x-www-form-urlencoded; charset=UTF-8"
+      },
+      {
+        "name": "X-Requested-With",
+        "value": "XMLHttpRequest"
+      },
+      {
+        "name": "Origin",
+        "value": "https://tradutorgaio.xunta.gal"
+      },
+      {
+        "name": "Connection",
+        "value": "keep-alive"
+      },
+      {
+        "name": "Referer",
+        "value": "https://tradutorgaio.xunta.gal/TradutorPublico/traducir/index"
+      },
+      {
+        "name": "Cookie",
+        "value": "dicTematicoPub=cidadania; ultimasOrixesPub=es,gl,pt; ultimosDestinosPub=gl,pt,es; JSESSIONID=K-DEYXe0My-6YMo0iZL1iSuzlc7lXTpApuF_xodpwYCo3T8F6-7a!-912607337"
+      },
+      {
+        "name": "Sec-Fetch-Dest",
+        "value": "empty"
+      },
+      {
+        "name": "Sec-Fetch-Mode",
+        "value": "cors"
+      },
+      {
+        "name": "Sec-Fetch-Site",
+        "value": "same-origin"
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "text",
+      "raw": "langpair=es-gl&dic_tematico=cidadania&q=Denis+solo+saldrá+del+Celta+como+traspaso.+Esto+se+debe+a+que+el+Celta+está+necesitado+de+dinero+y+saben+que+vendiendo+a+Denis+va+a+entrar+mucho&marcar=false",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "f55ca8c8-ed28-4484-b0aa-10e105e33bc6",
+    "colId": "history",
+    "containerId": "",
+    "name": "https://trad20apy.cixug.gal/translate",
+    "url": "https://trad20apy.cixug.gal/translate",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-01-18T12:19:06.302Z",
+    "modified": "2023-01-18T12:21:11.499Z",
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/x-www-form-urlencoded"
+      },
+      {
+        "name": "Content-Length",
+        "value": "143"
+      },
+      {
+        "name": "Origin",
+        "value": "https://tradutor.cixug.gal"
+      },
+      {
+        "name": "Connection",
+        "value": "keep-alive"
+      },
+      {
+        "name": "Referer",
+        "value": "https://tradutor.cixug.gal/"
+      },
+      {
+        "name": "Sec-Fetch-Dest",
+        "value": "empty"
+      },
+      {
+        "name": "Sec-Fetch-Mode",
+        "value": "cors"
+      },
+      {
+        "name": "Sec-Fetch-Site",
+        "value": "same-site"
+      },
+      {
+        "name": "Pragma",
+        "value": "no-cache"
+      },
+      {
+        "name": "Cache-Control",
+        "value": "no-cache"
+      },
+      {
+        "name": "TE",
+        "value": "trailers"
+      },
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "text",
+      "raw": "langpair=spa%7Cglg&markUnknown=no&prefs=&q=Iago%20Aspas%20y%20los%20%27magos%20del%20bal%C3%B3n%27%3A%20nadie%20genera%20m%C3%A1s%20que%20ellos",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "e6e01198-90fe-4640-b2fe-c53f5c5bcfa9",
+    "colId": "history",
+    "containerId": "",
+    "name": "https://translate.yandex.net/api/v1/tr.json/translate?id=4e84fea4.63c7e548.45eb03a6.74722d74657874-0-0&srv=tr-text&source_lang=es&target_lang=gl&reason=paste&format=text&ajax=1",
+    "url": "https://translate.yandex.net/api/v1/tr.json/translate?id=4e84fea4.63c7e548.45eb03a6.74722d74657874-0-0&srv=tr-text&source_lang=es&target_lang=gl&reason=paste&format=text&ajax=1",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-01-18T12:27:26.268Z",
+    "modified": "2023-01-18T12:27:26.268Z",
+    "headers": [
+      {
+        "name": "Accept-Language",
+        "value": "es,en-US;q=0.7,en;q=0.3"
+      },
+      {
+        "name": "Accept-Encoding",
+        "value": "gzip, deflate, br"
+      },
+      {
+        "name": "Content-Type",
+        "value": "application/x-www-form-urlencoded"
+      },
+      {
+        "name": "X-Retpath-Y",
+        "value": "https://translate.yandex.com"
+      },
+      {
+        "name": "Origin",
+        "value": "https://translate.yandex.com"
+      },
+      {
+        "name": "Connection",
+        "value": "keep-alive"
+      },
+      {
+        "name": "Referer",
+        "value": "https://translate.yandex.com/"
+      },
+      {
+        "name": "Sec-Fetch-Dest",
+        "value": "empty"
+      },
+      {
+        "name": "Sec-Fetch-Mode",
+        "value": "cors"
+      },
+      {
+        "name": "Sec-Fetch-Site",
+        "value": "cross-site"
+      },
+      {
+        "name": "Pragma",
+        "value": "no-cache"
+      },
+      {
+        "name": "Cache-Control",
+        "value": "no-cache"
+      },
+      {
+        "name": "TE",
+        "value": "trailers"
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [
+      {
+        "name": "id",
+        "value": "4e84fea4.63c7e548.45eb03a6.74722d74657874-0-0",
+        "isPath": false
+      },
+      {
+        "name": "srv",
+        "value": "tr-text",
+        "isPath": false
+      },
+      {
+        "name": "source_lang",
+        "value": "es",
+        "isPath": false
+      },
+      {
+        "name": "target_lang",
+        "value": "gl",
+        "isPath": false
+      },
+      {
+        "name": "reason",
+        "value": "paste",
+        "isPath": false
+      },
+      {
+        "name": "format",
+        "value": "text",
+        "isPath": false
+      },
+      {
+        "name": "ajax",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "body": {
+      "type": "text",
+      "raw": "langpair=spa%7Cglg&markUnknown=no&prefs=&q=Iago%20Aspas%20y%20los%20%27magos%20del%20bal%C3%B3n%27%3A%20nadie%20genera%20m%C3%A1s%20que%20ellos",
+      "form": []
+    },
+    "tests": []
+  }
+]
