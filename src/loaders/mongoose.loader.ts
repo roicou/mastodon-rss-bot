@@ -4,6 +4,7 @@ import logger from '@/libs/logger';
 
 export default async (): Promise<void> => {
 
+    // connect to mongodb
     await mongoose.connect(config.db.uri, {
         user: config.db.user,
         pass: config.db.password

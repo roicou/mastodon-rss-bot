@@ -1,70 +1,53 @@
-import FeedInterface from "@/interfaces/feed.interface";
-import rssService from "@/services/rss.service";
-import { read } from "feed-reader";
-import { DateTime } from "luxon";
-import logger from "@/libs/logger";
+import feedModel from '@/models/feed.model';
+import { ObjectId } from 'mongoose';
+import { DateTime, Settings } from 'luxon';
+import FeedInterface from '@/interfaces/feed.interface';
+Settings.defaultZone = "Europe/Madrid";
 
 class FeedService {
-
-    public async getNextFeed(): Promise<FeedInterface> {
-        const length = await rssService.getNumberOfSubscriptions();
-        for (let day = 0; day < 2; day++) {
-            for (let i = 0; i < length; i++) {
-                const rss = await rssService.getNextRss();
-                if (!rss) {
-                    logger.info("There are no rss to read. Review here!");
-                    await rssService.updateRss(rss._id);
-                    continue;
-                }
-                // logger.log('rss', rss)
-                // order rss by 
-                const feed: any = await read(rss.url);
-                if (!feed || !feed.entries?.length) {
-                    logger.info(`${rss.title}: there are no entries. Skipping...`);
-                    await rssService.updateRss(rss._id);
-                    continue;
-                }
-                const entries: FeedInterface[] = feed.entries.sort((a: FeedInterface, b: FeedInterface) => {
-                    // sort by date desc with DateTime
-                    return DateTime.fromISO(b.published).toMillis() - DateTime.fromISO(a.published).toMillis();
-                }).filter((entry: FeedInterface) => {
-                    day
-                    // only today entries
-                    return DateTime.fromISO(entry.published).toMillis() >= DateTime.local().minus({ day: day }).startOf('day').toMillis();
-                });
-                if (!entries.length) {
-                    logger.info(`${rss.title}: there are no entries for today. Skipping...`);
-                    await rssService.updateRss(rss._id);
-                    continue;
-                }
-                // find entrie position of rss.lastUrl
-                
-                let lastUrlIndex = entries.findIndex((entrie: FeedInterface) => {
-                    
-                    return entrie.link === rss.lastUrl
-                });
-                if (!lastUrlIndex || lastUrlIndex === 0) {
-                    logger.info(`${rss.title}: there are all published. Skipping...`);
-                    await rssService.updateRss(rss._id);
-                    continue;
-                }
-                // if lastUrlIndex is -1, then the rss.lastUrl is not in the entries
-                if (lastUrlIndex === -1) {
-                    lastUrlIndex = entries.length;
-                }
-                lastUrlIndex--;
-                const to_send = entries[lastUrlIndex];
-                to_send.www = rss.www || null;
-                to_send.hashtag = rss.hashtag;
-                to_send.rss = rss._id;
-                to_send.language = rss.language;
-                return to_send;
-            }
-            logger.info("There are no new feeds for today. Looking for on y esterday...");
-        }
-        logger.info("There are no new feeds to send");
-        return null;
+    /**
+     * create rss
+     * @param title 
+     * @param hashtag without #
+     * @param url 
+     * @returns 
+     */
+    public async newFeed(title: string, hashtags: string, url: string, language: string, www_replace: string): Promise<any> {
+        const hashtags_array = hashtags.split(' ');
+        return feedModel.create({ title, hashtags: hashtags_array, url, lastUrl: null, language, www_replace: www_replace || null, lastPost: null, posts: [], active: true });
     }
-}
 
+    /**
+     * update lastPost date
+     * @param _id 
+     * @param lastUrl 
+     * @returns 
+     */
+    public async updateFeedSended(_id: ObjectId) {
+        return feedModel.updateOne({ _id }, { $set: { lastPost: DateTime.now().toJSDate() } });
+    }
+
+    /**
+     * get all feeds with its posts
+     * @returns 
+     */
+    public async getAllFeedsWithPosts(): Promise<FeedInterface[]> {
+        return feedModel.aggregate([
+            {
+                $match: {
+                    active: true
+                },
+            },
+            {
+                $lookup: {
+                    from: 'posts',
+                    localField: '_id',
+                    foreignField: 'feed_id',
+                    as: 'posts'
+                }
+            }
+        ]);
+    }
+
+}
 export default new FeedService();

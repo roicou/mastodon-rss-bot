@@ -1,7 +1,7 @@
 import winston from 'winston';
 import config from '@/config';
-// import { DateTime, Settings } from 'luxon';
-// Settings.defaultZone = 'Europe/Madrid';
+import { DateTime, Settings } from 'luxon';
+Settings.defaultZone = 'Europe/Madrid';
 import 'winston-daily-rotate-file';
 import path from 'path';
 
@@ -11,9 +11,9 @@ const printf = winston.format.printf(info => {
         info.message += " " + info[symbols[1]].map((str: any) => (typeof str === 'object') ? JSON.stringify(str, null, 2) : str).join(" ");
     }
     if (info.level.indexOf("error") > -1) {
-        return `${info.timestamp} ${info.level}: ${info.message}${(info.stack ? `\n${info.stack}` : '')}`;
+        return `${DateTime.local().toFormat('yyyy-MM-dd HH:mm:ss')} ${info.level}: ${info.message}${(info.stack ? `\n${info.stack}` : '')}`;
     }
-    return `${info.timestamp} ${info.level}: ${info.message}`;
+    return `${DateTime.local().toFormat('yyyy-MM-dd HH:mm:ss')} ${info.level}: ${info.message}`;
 });
 
 const format_log = winston.format.combine(
@@ -22,7 +22,10 @@ const format_log = winston.format.combine(
         metadata: true
     }),
     winston.format.timestamp({
-        format: 'YYYY-MM-DD HH:mm:ss'
+        //format: 'YYYY-MM-DD HH:mm:ss',
+        format: () => {
+            return DateTime.local().toFormat('yyyy-MM-dd HH:mm:ss');
+        }
     }),
     printf
 );
