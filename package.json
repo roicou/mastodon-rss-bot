@@ -8,7 +8,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node dist/app.js",
     "build:start": "npm run build && npm start",
-    "add-rss": "node dist/scripts/add_rss.js",
+    "new-feed": "node dist/scripts/new_feed.js",
+    "new-forbidden": "node dist/scripts/new_forbidden.js",
+    "new-translation": "node dist/scripts/new_translation.js",
     "lint": "eslint --ext .js,.ts ."
   },
   "repository": {

@@ -1,12 +1,17 @@
 import { ObjectId } from "mongoose";
+import PostInterface from "./post.interface";
 
 export default interface FeedInterface {
-    title: string;
-    link: string;
-    www: string|null;
-    published: string;
-    description: string;
-    hashtag: string;
-    rss: ObjectId;
-    language: string;
+    _id?: ObjectId
+    title?: string;
+    hashtags?: string[];
+    url?: string;
+    www_replace?: string;
+    language?: string;
+    createdAt?: Date;
+    updatedAt?: Date;
+    lastPost?: Date;
+    posts?: PostInterface[];
+    //post?: PostInterface;
+    active?: boolean;
 }

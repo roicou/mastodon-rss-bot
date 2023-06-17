@@ -1,10 +1,12 @@
-import { MegalodonInterface } from "megalodon";
 import megalodonLoader from "@/loaders/megalodon.loader";
 import rssLoader from "@/loaders/rss.loader";
 import mongooseLoader from "@/loaders/mongoose.loader";
 
-export default async (client: MegalodonInterface) => {
+export default async () => {
+    /** Loading mongoose */
     await mongooseLoader();
-    await megalodonLoader(client);
+    /** Loading rss */
     await rssLoader();
+    /** Loading megalodon client */
+    await megalodonLoader();
 }

@@ -54,7 +54,7 @@ export default {
     google: {
         api: process.env.GOOGLE_API,
         project_id: process.env.GOOGLE_PROJECT_ID,
-        max_chars: process.env.GOOGLE_MAX_CHARS || 500000,
+        max_chars: Number(process.env.GOOGLE_MAX_CHARS) || 500000,
         translate_to: process.env.GOOGLE_TRANSLATE_TO || "gl",
     }
 }

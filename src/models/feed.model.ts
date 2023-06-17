@@ -1,30 +1,34 @@
-import RssInterface from '@/interfaces/rss.interface';
+import FeedInterface from '@/interfaces/feed.interface';
 import { Schema, model } from 'mongoose';
 
 
-const RssModel = new Schema<RssInterface>({
+const FeedModel = new Schema<FeedInterface>({
     title: {
         type: String,
         required: true,
     },
-    hashtag: {
-        type: String,
+    hashtags: {
+        type: [String],
         required: true,
     },
     url: {
         type: String,
         required: true,
     },
-    www: {
-        type: String,
-        required: false,
-    },
-    lastUrl: {
+    www_replace: {
         type: String,
         required: false,
     },
     language: {
         type: String,
+        required: true,
+    },
+    lastPost: {
+        type: Date,
+        required: false,
+    },
+    active: {
+        type: Boolean,
         required: true,
     }
 }, {
@@ -32,4 +36,4 @@ const RssModel = new Schema<RssInterface>({
     versionKey: false
 });
 
-export default model<RssInterface>('Rss', RssModel);
+export default model<FeedInterface>('Feed', FeedModel);
